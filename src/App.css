@@ -1,10 +1,26 @@
-.signup {
-    background-color: red;
+html,body{
+  min-height: 100vh;
+}
+
+
+.SignupContainer {
+    border: 2px solid black;
     width: 100%;
+    display: flex;
 }
 
-.signup-form{
-  background-color: aliceblue;
-  width: 40%;
+.Signup {
+   border: 2px solid blue;
+   width: 100%;
 }
 
+.form {
+    background-color: aliceblue;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 3rem;
+}

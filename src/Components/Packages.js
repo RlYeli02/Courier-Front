@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { GET_PACKAGES} from "../routes/Useroutes"
-import axios from 'axios';
-import { Link } from "react-router-dom";
+
 
 const Packages =()=>{
     const [packages, setPackages]=useState([])
@@ -17,7 +16,7 @@ const Packages =()=>{
          setPackages(pack)
      }
     
-     
+     console.log(packages)
      return(
         <div className="package-container">
             <div className="package">
