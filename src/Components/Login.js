@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import {LOGIN, GET_PACKAGES} from "../routes/Useroutes"
 import axios from 'axios';
+import  "../App.css";
 
 
 
@@ -31,8 +32,11 @@ const Login = ()=>{
       email: email, 
       password: password
       }) 
+      
+
       if(logged.status===404){
-          alert("usuario no existe o credenciales incorrectas")
+         
+          console.log("not sucess")
       }
       else if (logged.status===200){ 
           console.log("sucess")
@@ -45,10 +49,12 @@ const Login = ()=>{
     
     }
     return(
-        <div className="SignupContainer">
-            <div className="Signup">
+        <div className="login-container">
+           
                 <div className="form">
-                    <label>Email</label>
+                    <h1>🔐</h1>
+                     <h1>Login</h1>
+                    <label className="labels">Email</label>
                     <br />
                     <input
                     type="text"
@@ -67,9 +73,9 @@ const Login = ()=>{
                     onChange={handlePassword}
                     >
                     </input>
-                    <button onClick={Login}>login</button>
+                    <button className="login-button" onClick={Login}>login</button>
                 </div>
-            </div>
+            
         </div>
     )
 }

@@ -39,10 +39,13 @@ const SignUp = ()=>{
         <div className="SignupContainer">
             <div className="Signup">
                 <div className="form">
+                    <h1>🙆‍♀️</h1>
+                    <h1>Sign Up</h1>
                     <label>Name</label>
                     <br />
                     <input
                     type="text"
+                    placeholder="Enter name"
                     className="form-field"
                     value={name}
                     onChange={handleName}
@@ -53,6 +56,7 @@ const SignUp = ()=>{
                     <br />
                     <input
                     type="text"
+                    placeholder="Enter email"
                     className="form-field"
                     value={email}
                     onChange={handleEmail}
@@ -63,12 +67,13 @@ const SignUp = ()=>{
                     <br />
                     <input
                     type="text"
+                    placeholder="Enter password"
                     className="form-field"
                     value={password}
                     onChange={handlePassword}
                     >
                     </input>
-                    <button onClick={sent}>Signup</button>
+                    <button className="signup-button" onClick={sent}>Signup</button>
                 </div>
             </div>
         </div>

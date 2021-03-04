@@ -1,26 +1,98 @@
-html,body{
-  min-height: 100vh;
+html,
+body {
+  margin: 0;
+  padding: 0;
+    min-height: 100%;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(247, 176, 255, 1) 0%, rgba(131, 234, 255, 1) 97%);
 }
 
+* {
+    box-sizing: border-box;
+}
 
-.SignupContainer {
-    border: 2px solid black;
+.Welcome-container {
+    min-height: 100vh;
     width: 100%;
     display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(209, 159, 255);
 }
 
+.welcome-main {
+    background-color: white;
+    width: 50%;
+}
+
+.Register,
+.login {
+    border-radius: 2em;
+    border: 1px solid beige;
+    background-color: rgb(221, 221, 221);
+    width: 40%;
+    margin: 2%;
+    height: 3em;
+    color: #000;
+    font-weight: 500;
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .Signup {
-   border: 2px solid blue;
-   width: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .form {
-    background-color: aliceblue;
-    width: 100%;
+    width: 50%;
     align-items: center;
     text-align: center;
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 3rem;
+    margin-top: 10em;
+}
+
+.form-field {
+    font-size: 0.8em;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 50%;
+    height: 4em;
+}
+
+.login-button,
+.signup-button {
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 40%;
+    margin: 3em 0em;
+    background-color: #f3f3f3;
+    height: 4em;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+.logout {
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 10%;
+    height: 10%;
+    margin-top: 5%;
+    background-color: aliceblue;
 }

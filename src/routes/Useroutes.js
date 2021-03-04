@@ -1,7 +1,7 @@
 
 
-const Userurl = 'http://localhost:3001/users';
-const packagesUrl = 'http://localhost:3001/users/packages'
+const Userurl = 'http://localhost:3001/api/membership';
+const packagesUrl = 'http://localhost:3001/api/packages/getPending'
 
 export const SIGN_UP = `${Userurl}/signup`;
 export const LOGIN = `${Userurl}/login`;

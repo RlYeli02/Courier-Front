@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import SignUp from "./Components/Signup"
 import Login from "./Components/Login"
+import Welcome from "./Components/Welcome"
 import Packages from "./Components/Packages"
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/packages">
             <Packages />
           </Route>
+          <Welcome/>
         </Switch>
     </div>
     </Router>
