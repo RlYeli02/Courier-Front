@@ -1,13 +1,15 @@
 /* eslint-disable no-restricted-globals */
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
-import {LOGIN} from "../routes/Useroutes"
+import {LOGIN, GET_PACKAGES} from "../routes/Useroutes"
 import axios from 'axios';
+
+
 
 const Login = ()=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const history = useHistory()
     const handleEmail =(e)=>{
         e.preventDefault();
         setEmail(e.target.value)
@@ -18,14 +20,28 @@ const Login = ()=>{
         setPassword(e.target.value)
         console.log(password)
     }
-
+    useEffect(()=>{
+        if(localStorage.getItem('user-info')){
+          history.push("/packages")
+        }
+        
+    })
     async function Login(){
       let logged = await axios.post(LOGIN, {
       email: email, 
       password: password
       }) 
-     
-      localStorage.setItem("user-info",JSON.stringify(logged))
+      if(logged.status===404){
+          alert("usuario no existe o credenciales incorrectas")
+      }
+      else if (logged.status===200){ 
+          console.log("sucess")
+          console.log(password)
+          logged = await logged.data
+          localStorage.setItem('user-info', JSON.stringify(logged))
+          history.push("/packages")
+       }
+      
     
     }
     return(
