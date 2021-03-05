@@ -8,46 +8,42 @@ import  "../App.css";
 
 
 const Login = ()=>{
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory()
-    const handleEmail =(e)=>{
+
+    const handleUsername =(e)=>{
         e.preventDefault();
-        setEmail(e.target.value)
-        console.log(email)
+        setUsername(e.target.value.replace(/[^\w\s]/gi, ""))
+        console.log(username)
     }
       const handlePassword =(e)=>{
           e.preventDefault();
-        setPassword(e.target.value)
+        setPassword(e.target.value.replace(/[^\w\s]/gi, ""))
         console.log(password)
     }
-    useEffect(()=>{
-        if(localStorage.getItem('user-info')){
-          history.push("/packages")
-        }
-        
-    })
-    async function Login(){
-      let logged = await axios.post(LOGIN, {
-      email: email, 
-      password: password
-      }) 
-      
+  
+  
+   const newPost={
+     username:username,
+     password:password
+   }
+   
 
-      if(logged.status===404){
-         
-          console.log("not sucess")
-      }
-      else if (logged.status===200){ 
-          console.log("sucess")
-          console.log(password)
-          logged = await logged.data
-          localStorage.setItem('user-info', JSON.stringify(logged))
-          history.push("/packages")
-       }
-      
+    const login = async () => {
     
-    }
+      const resp = await axios.post(LOGIN, newPost)
+      console.log(resp)
+      if(resp.data.success===true){
+        console.log("bien")
+        history.push(`/packages/${username}`)
+      }
+      else{
+        console.log("mal")
+      }
+
+    };
+
     return(
         <div className="login-container">
            
@@ -58,9 +54,11 @@ const Login = ()=>{
                     <br />
                     <input
                     type="text"
+                    maxLength="10"
+                    
                     className="form-field"
-                    value={email}
-                    onChange={handleEmail}
+                    value={username}
+                    onChange={handleUsername}
                     >
                     </input>
                     <br />
@@ -69,11 +67,13 @@ const Login = ()=>{
                     <input
                     type="text"
                     className="form-field"
+                    placeholder="max length is 10 characters"
                     value={password}
                     onChange={handlePassword}
                     >
                     </input>
-                    <button className="login-button" onClick={Login}>login</button>
+                    
+                    <button className="login-button"   onClick={login} >login</button>
                 </div>
             
         </div>

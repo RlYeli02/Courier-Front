@@ -2,54 +2,49 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { GET_PACKAGES} from "../routes/Useroutes"
 import {useHistory} from "react-router-dom";
+import axios from "axios"
+
 
 const Packages =()=>{
     const [packages, setPackages]=useState([])
-     const history = useHistory()
+ 
      useEffect(()=>{
-         fechtData()
-
+         getData()
      },[])
-     const fechtData = async ()=>
-     {
-         const Data= await fetch(GET_PACKAGES);
-         const pack = await Data.json()
-         console.log(pack)
-         setPackages(pack)
+
+     const getData = async(props,user)=>{
+       const res = await axios.get(`https://courierdemo.azurewebsites.net/api/packages/getPending?username=${props}`)
+        const data = await res.data.responseObject
+        setPackages(data)
+
      }
      
-     console.log(packages)
-     const Logout=()=>{
-         localStorage.removeItem('user-info')
-         history.push("/")
-
-     }
      return(
-        <div className="package-container">
-            <div className="package">
-        <h1>Packages</h1>
-
-        
-         <table>
-            <tr>
-                <th>Product Name</th>
-                <th>Type of product</th>
-            </tr>
+        <div>
+        <h1>Movies list 🎬 </h1>
+        <div>
+          <table className="table">
+            <thead>
+              <tr className="table-content">
+                <th>Description</th>
+                <th> Weight</th>
+                <th> $ Price to pay </th>
+                <th> Suplier</th>
+              </tr>
+            </thead>
             <tbody>
-                {packages.map((pacKage, i)=>(
+              {packages.map((packages, i) => (
                 <tr>
-                    <td key={pacKage._id}>{pacKage.name}</td>
-                    <td key={i}>{pacKage.typeOF}</td>
+                  <td className="table-content">{packages.description}</td>
+                  <td>{packages.weight}</td>
+                  <td>{packages.priceToPay}</td>
+                   <td>{packages.supplier}</td>
                 </tr>
-                ))}
+              ))}
             </tbody>
-        </table>
-                
-            
-        
-        <Link to ="/"><button onClick={Logout} className="logout">Log out</button></Link>
+          </table>
         </div>
-        </div>
+      </div>
         
     )
 }

@@ -1,8 +1,8 @@
 
 
-const Userurl = 'http://localhost:3001/api/membership';
-const packagesUrl = 'http://localhost:3001/api/packages/getPending'
+const Userurl = 'https://cors-anywhere.herokuapp.com/https://courierdemo.azurewebsites.net/api/membership/login';
+const packagesUrl = 'https://courierdemo.azurewebsites.net/api/packages/getPending?username='
 
 export const SIGN_UP = `${Userurl}/signup`;
-export const LOGIN = `${Userurl}/login`;
+export const LOGIN = `${Userurl}`
 export const GET_PACKAGES = `${packagesUrl}`

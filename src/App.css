@@ -96,3 +96,12 @@ td {
     margin-top: 5%;
     background-color: aliceblue;
 }
+
+
+.table{
+    
+    width: 100%;
+}
+.table-content{
+    padding: 10px;
+}
